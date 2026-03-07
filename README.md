@@ -7,7 +7,7 @@
 
 ## 🎥 Explicación del Proyecto
 
-> **Enlace al video explicativo:** [Haz clic aquí para ver la explicación detallada de la arquitectura y funcionamiento de la API](https://drive.google.com/file/d/1rm55i-iwT8J9tA8HghbtZG3LnTtdTRyi/view?usp=sharing)
+> **Enlace al video explicativo:** [Haz clic aquí para ver la explicación detallada de la arquitectura y funcionamiento de la API](https://drive.google.com/file/d/1rm55i-iwT8J9tA8HghbtZG3LnTtdTRyi/view?usp=sharing).
 
 
 ---
