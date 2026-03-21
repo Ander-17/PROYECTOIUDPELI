@@ -7,6 +7,6 @@ router.get('/', getTipos);
 
 router.post('/', createTipo);
 
-router.put('/:nombre', updateTipo);
+router.put('/:id', updateTipo);
 
 module.exports = router;

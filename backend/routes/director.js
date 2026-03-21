@@ -9,6 +9,6 @@ router.get('/', getDirectores);
 router.post('/', createDirector);
 
 
-router.put('/:nombres', updateDirector);
+router.put('/:id', updateDirector);
 
 module.exports = router;

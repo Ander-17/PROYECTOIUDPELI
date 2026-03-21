@@ -33,33 +33,25 @@ const createProductora = async (req = request, res = response) => {
 
 const updateProductora = async (req = request, res = response) => {
     try {
-        const nombreParam = req.params.nombre; 
-        
-        const { nombre, estado, slogan, descripcion } = req.body;
+        const { id } = req.params;
+        const { nombre, slogan, estado } = req.body;
 
         const data = {
             nombre,
-            estado,
             slogan,
-            descripcion,
+            estado,
             fechaActualizacion: new Date()
         };
 
-        const productoraActualizada = await Productora.findOneAndUpdate(
-            { nombre: nombreParam }, 
-            data, 
-            { new: true } 
-        );
+        const actualizada = await Productora.findByIdAndUpdate(id, data, { new: true });
 
-        if (!productoraActualizada) {
-            return res.status(404).json({ msg: `No se encontró la productora "${nombreParam}".` });
+        if (!actualizada) {
+            return res.status(404).json({ msg: "Productora no encontrada" });
         }
 
-        res.status(200).json(productoraActualizada);
-
+        res.status(200).json(actualizada);
     } catch (error) {
-        console.error('❌ Error al actualizar la productora', error);
-        res.status(500).json({ msg: 'Ocurrió un error al actualizar la productora' });
+        res.status(500).json({ msg: 'Error al actualizar' });
     }
 }
 

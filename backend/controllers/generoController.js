@@ -33,8 +33,8 @@ const createGenero = async (req = request, res = response) => {
 
 const updateGenero = async (req = request, res = response) => {
     try {
-        const nombreParam = req.params.nombre; 
-        
+        // Cambiamos 'nombre' por 'id'
+        const { id } = req.params; 
         const { nombre, descripcion, estado } = req.body;
 
         const data = {
@@ -44,14 +44,15 @@ const updateGenero = async (req = request, res = response) => {
             fechaActualizacion: new Date()
         };
 
-        const generoActualizado = await Genero.findOneAndUpdate(
-            { nombre: nombreParam }, 
+        // Usamos findByIdAndUpdate para evitar conflictos con el índice único del nombre
+        const generoActualizado = await Genero.findByIdAndUpdate(
+            id, 
             data, 
             { new: true } 
         );
 
         if (!generoActualizado) {
-            return res.status(404).json({ msg: `No se encontró el género "${nombreParam}".` });
+            return res.status(404).json({ msg: "No se encontró el género para actualizar." });
         }
 
         res.status(200).json(generoActualizado);

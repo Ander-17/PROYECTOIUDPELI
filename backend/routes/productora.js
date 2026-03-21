@@ -7,6 +7,6 @@ router.get('/', getProductoras);
 
 router.post('/', createProductora);
 
-router.put('/:nombre', updateProductora);
+router.put('/:id', updateProductora);
 
 module.exports = router;

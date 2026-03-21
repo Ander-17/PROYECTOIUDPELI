@@ -33,31 +33,15 @@ const createDirector = async (req = request, res = response) => {
 
 const updateDirector = async (req = request, res = response) => {
     try {
-        const nombresParam = req.params.nombres; 
-        
-        const { nombres, estado } = req.body;
+        const { id } = req.params;
+        const { nombres, estado } = req.body; // Cambiado a nombres
 
-        const data = {
-            nombres,
-            estado,
-            fechaActualizacion: new Date()
-        };
+        const data = { nombres, estado, fechaActualizacion: new Date() };
 
-        const directorActualizado = await Director.findOneAndUpdate(
-            { nombres: nombresParam }, 
-            data, 
-            { new: true } 
-        );
-
-        if (!directorActualizado) {
-            return res.status(404).json({ msg: `No se encontró el director "${nombresParam}".` });
-        }
-
+        const directorActualizado = await Director.findByIdAndUpdate(id, data, { new: true });
         res.status(200).json(directorActualizado);
-
     } catch (error) {
-        console.error('❌ Error al actualizar el director', error);
-        res.status(500).json({ msg: 'Ocurrió un error al actualizar el director' });
+        res.status(500).json({ msg: 'Error al actualizar' });
     }
 }
 

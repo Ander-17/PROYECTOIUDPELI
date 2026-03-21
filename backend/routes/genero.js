@@ -8,6 +8,6 @@ router.get('/', getGeneros);
 
 router.post('/', createGenero);
 
-router.put('/:nombre', updateGenero);
+router.put('/:id', updateGenero);
 
 module.exports = router;

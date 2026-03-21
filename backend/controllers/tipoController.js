@@ -33,31 +33,25 @@ const createTipo = async (req = request, res = response) => {
 
 const updateTipo = async (req = request, res = response) => {
     try {
-        const nombreParam = req.params.nombre; 
-        
-        const { nombre, descripcion } = req.body;
+        const { id } = req.params;
+        const { nombre, descripcion, estado } = req.body;
 
         const data = {
             nombre,
             descripcion,
+            estado,
             fechaActualizacion: new Date()
         };
 
-        const tipoActualizado = await Tipo.findOneAndUpdate(
-            { nombre: nombreParam }, 
-            data, 
-            { new: true } 
-        );
+        const actualizado = await Tipo.findByIdAndUpdate(id, data, { new: true });
 
-        if (!tipoActualizado) {
-            return res.status(404).json({ msg: `No se encontró el tipo "${nombreParam}".` });
+        if (!actualizado) {
+            return res.status(404).json({ msg: "Tipo no encontrado" });
         }
 
-        res.status(200).json(tipoActualizado);
-
+        res.status(200).json(actualizado);
     } catch (error) {
-        console.error('❌ Error al actualizar el tipo', error);
-        res.status(500).json({ msg: 'Ocurrió un error al actualizar el tipo' });
+        res.status(500).json({ msg: 'Error al actualizar el tipo' });
     }
 }
 
