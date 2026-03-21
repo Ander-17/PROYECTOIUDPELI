@@ -1,59 +1,90 @@
-# API de Gestión Películas 🎬
 
-**Desarrollado por:** Anderson Lopera Rodríguez  
-*Estudiante de la Tecnología en Desarrollo de Software - IU Digital de Antioquia*
+# 🎬 CIUDA: Banco de Películas IUDigital
 
----
-
-## 🎥 Explicación del Proyecto
-
-> **Enlace al video explicativo:** [Haz clic aquí para ver la explicación detallada de la arquitectura y funcionamiento de la API](https://drive.google.com/file/d/1rm55i-iwT8J9tA8HghbtZG3LnTtdTRyi/view?usp=sharing).
-
+**CIUDA** es un ecosistema de gestión multimedia diseñado para la **IU Digital de Antioquia**. Este sistema permite a los administradores centralizar y organizar el catálogo de películas, directores y productoras en un entorno web profesional y moderno.
 
 ---
 
-## 🚀 Sobre este Proyecto
+## 🎥 Video Demo / Explicativo
 
-Una API RESTful desarrollada en Node.js y Express para la gestión integral de un catálogo de películas y series. Este backend implementa una arquitectura orientada a recursos y utiliza una base de datos no relacional (MongoDB) para gestionar referencias cruzadas (`populate`) entre múltiples colecciones de datos, demostrando habilidades sólidas en diseño de APIs como preparación para pruebas técnicas de prácticas profesionales.
+> ⚠️ **[https://drive.google.com/file/d/1yCOETuaeA9-IHyj5zT8twQGIbW6mpWry/view?usp=sharing]**
 
-## 🛠️ Tecnologías Utilizadas
+---
 
-* **Entorno de ejecución:** Node.js
-* **Framework:** Express.js
-* **Base de Datos:** MongoDB Atlas
-* **ODM:** Mongoose
-* **Gestión de variables:** Dotenv
+## 🚀 Características Principales
 
-## ⚙️ Instalación y Configuración local
+* **Gestión de Catálogo (Media):** Registro completo de títulos, seriales únicos, años de estreno y sinopsis.
+* **Módulos Administrativos:** CRUDs independientes para la gestión de **Géneros**, **Directores**, **Productoras** y **Tipos de Contenido**.
+* **Interfaz Cinematográfica:** Diseño responsivo en modo oscuro con una paleta de colores de alta visibilidad (Negro, Dorado y Cian).
+* **Navegación Intuitiva:** Barra de navegación fija (Sticky Navbar) y footer con separación visual clara.
 
-1. Clona este repositorio en tu máquina local:
-   ```bash
-   git clone 
-   ```
+---
 
-2. Ingresa a la carpeta del proyecto e instala las dependencias:
-   ```bash
-   cd backend
-   npm install
-   ```
+## 🛠️ Stack Tecnológico
 
-3. Crea un archivo `.env` en la raíz del proyecto basándote en esta estructura:
-   ```env
-   PORT=4000
-   MONGO_URI=tu_cadena_de_conexion_de_mongodb_atlas
-   ```
+### **Frontend**
 
-4. Inicia el servidor en entorno de desarrollo:
-   ```bash
-   npm run dev
-   ```
+* **React.js**
+* **Bootstrap 5**
+* **React Router Dom**
+* **Axios**
 
-## 🔌 Estructura de Endpoints
+### **Backend & Persistencia**
 
-La API cuenta con 5 módulos principales bajo el prefijo `/api/`:
+* **Node.js & Express**
+* **MongoDB**
+* **Mongoose**
 
-* **Géneros (`/api/generos`):** `GET`, `POST`, `PUT`
-* **Directores (`/api/directores`):** `GET`, `POST`, `PUT`
-* **Productoras (`/api/productoras`):** `GET`, `POST`, `PUT`
-* **Tipos (`/api/tipos`):** `GET`, `POST`, `PUT`
-* **Media (`/api/media`):** `GET`, `POST`, `PUT`, `DELETE`
+---
+
+## 📂 Estructura del Proyecto (Frontend)
+
+```text
+src/
+ ├── api/           # Configuración de axios y conexión con el servidor
+ ├── assets/        # Recursos visuales, logos e iconos
+ ├── components/    # Componentes globales como Navbar, Footer y Hero
+ ├── pages/         # Vistas principales de administración
+ └── App.css        # Estilos globales
+```
+
+---
+
+## 🔧 Configuración e Instalación
+
+### 1. Requisitos Previos
+
+* Tener instalado Node.js (versión 16 o superior)
+* Tener una instancia de MongoDB (Local o Atlas)
+
+### 2. Instalación del Proyecto
+
+```bash
+git clone https://github.com/TU_USUARIO/CIUDA.git
+cd CIUDA
+npm install
+```
+
+### 3. Variables de Entorno (.env)
+
+```env
+VITE_API_URL=http://localhost:4000/api
+```
+
+### 4. Ejecución del Entorno
+
+```bash
+npm run dev
+```
+
+---
+
+## 🎓 Créditos e Institución
+
+Este proyecto ha sido desarrollado como parte de la formación académica en la Tecnología en Desarrollo de Software de la IU Digital de Antioquia.
+
+* **Desarrollador:** Ander-17 (Estudiante de 4to Semestre)
+
+---
+
+© 2026 CIUDA | IU Digital de Antioquia | Anderson Lopera Rodríguez 
