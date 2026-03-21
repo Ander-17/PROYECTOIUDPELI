@@ -83,7 +83,7 @@ npm run dev
 
 Este proyecto ha sido desarrollado como parte de la formación académica en la Tecnología en Desarrollo de Software de la IU Digital de Antioquia.
 
-* **Desarrollador:** Ander-17 (Estudiante de 4to Semestre)
+* **Desarrollador:** Anderson Lopera Rodríguez (Estudiante de 5to Semestre)
 
 ---
 
