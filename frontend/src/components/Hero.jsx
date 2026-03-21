@@ -3,17 +3,18 @@ import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   return (
-    <div className="hero-section text-center">
-      <h1 className="hero-title display-4 mb-3">
-        🎬 Bienvenido a CineAdmin
+    <div className="hero-container text-center">
+      <h1 className="hero-title fw-bold display-4 mb-3">
+        CIUDA: Banco de Películas IUDigital
       </h1>
-      <p className="hero-subtitle mb-4">
-        Tu panel de control centralizado para gestionar el catálogo multimedia. Administra géneros, directores, productoras y todo tu inventario de películas y series en un solo lugar.
+      
+      <p className="hero-text mx-auto mb-4">
+        Panel de control de administrador centralizado para la gestión del catálogo multimedia de la IU Digital de Antioquia. 
+        Organiza géneros, directores y producciones en un solo lugar.
       </p>
       
-      {/* Botón de llamada a la acción */}
-      <Link to="/media" className="btn btn-warning btn-lg fw-bold px-4 rounded-pill shadow-sm">
-        Explorar Catálogo Multimedia
+      <Link to="/media" className="btn btn-warning btn-lg fw-bold px-5 rounded-pill shadow">
+        Gestionar Inventario
       </Link>
     </div>
   );
