@@ -12,7 +12,6 @@ import { Media } from './pages/Media';
 
 function App() {
   return (
-    // Conservamos este div para que el Footer siga pegado abajo
     <div className="d-flex flex-column min-vh-100 bg-dark text-light">
       <BrowserRouter>
         <Navbar />
