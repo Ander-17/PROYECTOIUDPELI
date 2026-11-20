@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import apiClient from '../api/apiclient'; // 👈 Importamos tu cliente con la URL de Vercel y withCredentials
+import apiClient from '../api/apiClient'; // 👈 Importamos tu cliente con la URL de Vercel y withCredentials
 
 export const Login = () => {
   const [email, setEmail] = useState('');

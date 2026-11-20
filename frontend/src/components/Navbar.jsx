@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import apiClient from '../api/apiclient';
+import apiClient from '../api/apiClient';
 
 export const Navbar = () => {
   const { esAutenticado, logout } = useAuth();

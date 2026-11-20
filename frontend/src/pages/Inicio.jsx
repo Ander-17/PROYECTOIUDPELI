@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Hero } from '../components/Hero';
 import { MovieCard } from '../components/MovieCard';
-import apiClient from '../api/apiclient';
+import apiClient from '../api/apiClient';
 
 export const Inicio = () => {
   const [peliculas, setPeliculas] = useState([]);
