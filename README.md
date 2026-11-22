@@ -1,90 +1,154 @@
+# 🎬 CIUDA Cine: Banco de Películas IUDigital
 
-# 🎬 CIUDA: Banco de Películas IUDigital
+**CIUDA Cine** es una aplicación web integral (*Full-Stack* MERN) desarrollada de manera individual para la **Institución Universitaria Digital de Antioquia (IU Digital)**, orientada a la gestión centralizada y consulta pública de un catálogo audiovisual universitario (películas, documentales y series).
 
-**CIUDA** es un ecosistema de gestión multimedia diseñado para la **IU Digital de Antioquia**. Este sistema permite a los administradores centralizar y organizar el catálogo de películas, directores y productoras en un entorno web profesional y moderno.
-
----
-
-## 🎥 Video Demo / Explicativo
-
-> ⚠️ **[https://drive.google.com/file/d/1yCOETuaeA9-IHyj5zT8twQGIbW6mpWry/view?usp=sharing]**
+El sistema articula una base de datos documental en **MongoDB Atlas**, una API RESTful segura construida en **Node.js y Express** (con autenticación mediante **JWT**, cifrado **`bcrypt`** y *cookies* **`HttpOnly`**), y una interfaz dinámica en **ReactJS** desplegada en producción sobre **Vercel**.
 
 ---
 
-## 🚀 Características Principales
+## 🌐 Enlaces en Producción y Recursos del Proyecto
 
-* **Gestión de Catálogo (Media):** Registro completo de títulos, seriales únicos, años de estreno y sinopsis.
-* **Módulos Administrativos:** CRUDs independientes para la gestión de **Géneros**, **Directores**, **Productoras** y **Tipos de Contenido**.
-* **Interfaz Cinematográfica:** Diseño responsivo en modo oscuro con una paleta de colores de alta visibilidad (Negro, Dorado y Cian).
-* **Navegación Intuitiva:** Barra de navegación fija (Sticky Navbar) y footer con separación visual clara.
+* **Aplicación Web en Producción (Frontend):** [https://proyectoiudpelifront.vercel.app/](https://proyectoiudpelifront.vercel.app/)
+* **API REST en Producción (Backend):** [https://proyectoiudpeliback.vercel.app/](https://proyectoiudpeliback.vercel.app/)
+* **Repositorio Consolidado (GitHub):** [https://github.com/Ander-17/PROYECTOIUDPELI](https://github.com/Ander-17/PROYECTOIUDPELI)
+
+---
+
+## 🎥 Sustentación Audiovisual (Videos Demostrativos)
+
+* **Video 1 — Desarrollo del Backend y API REST:** [Ver en Google Drive](https://drive.google.com/file/d/1rm55i-iwT8J9tA8HghbtZG3LnTtdTRyi/view)
+* **Video 2 — Desarrollo de Interfaces en ReactJS:** [Ver en Google Drive](https://drive.google.com/file/d/1yCOETuaeA9-IHyj5zT8twQGIbW6mpWry/view?usp=sharing)
+* **Video 3 — Despliegue en la Nube (Vercel):** [Ver en Google Drive](https://drive.google.com/file/d/1K8X1tJBNNjG6SuLBym60mgWv_37uVfrO/view?usp=sharing)
+* **Video 4 — Demostración Consolidada del Sistema Completo:** [Ver en Google Drive](https://drive.google.com/file/d/1hTgGEn8FAuxEnqUABYE2ziKCiLG6qIVk/view?usp=sharing)
+
+---
+
+## 🚀 Características Principales y Perfiles de Acceso
+
+### 1. Vista Pública (Consulta Libre)
+* **Catálogo Audiovisual Dinámico:** Exploración de producciones disponibles con visualización de póster, año de estreno, sinopsis y metadatos asociados.
+* **Filtros y Búsqueda:** Filtrado por **Género**, **Tipo**, **Director** y **Productora**, además de barra de búsqueda interactiva.
+* **Navegación Fluida:** Arquitectura *Single Page Application* (SPA) con soporte para recarga de rutas en producción (`vercel.json`).
+
+### 2. Panel Administrativo (Acceso Protegido)
+* **Autenticación y Control de Acceso:** Inicio y cierre de sesión seguros mediante contraseñas cifradas con `bcrypt`, emisión de **JSON Web Tokens (JWT)** y almacenamiento en *cookies* `HttpOnly` con políticas CORS configuradas entre dominios.
+* **Gestión Modular (CRUD Completo):**
+  * **Módulo de Género:** Creación, edición y activación/inactivación de géneros cinematográficos.
+  * **Módulo de Director:** Administración de directores principales y su estado activo/inactivo.
+  * **Módulo de Productora:** Gestión de casas productoras, eslogan, descripción y estado.
+  * **Módulo de Tipo:** Clasificación de formatos multimedia (película, serie, documental, etc.).
+  * **Módulo de Media:** Registro, edición y eliminación de producciones con serial único, URL, portada y validación de entidades activas referenciadas.
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-### **Frontend**
-
-* **React.js**
-* **Bootstrap 5**
-* **React Router Dom**
-* **Axios**
-
-### **Backend & Persistencia**
-
-* **Node.js & Express**
-* **MongoDB**
-* **Mongoose**
+| Capa | Tecnologías y Librerías |
+| :--- | :--- |
+| **Frontend** | React.js, Vite, Bootstrap 5, React Router DOM, Axios |
+| **Backend** | Node.js, Express.js, CORS, Cookie-Parser |
+| **Seguridad** | JSON Web Token (`jsonwebtoken`), `bcryptjs` / `bcrypt`, *Cookies* `HttpOnly` |
+| **Base de Datos** | MongoDB Atlas (NoSQL), Mongoose ODM |
+| **Infraestructura y Despliegue** | Git, GitHub, Vercel (*Serverless Functions* & *Static Hosting*) |
 
 ---
 
-## 📂 Estructura del Proyecto (Frontend)
+## 📂 Arquitectura y Estructura del Repositorio
+
+El proyecto sigue una estructura modular desacoplada dentro de un mismo repositorio (`PROYECTOIUDPELI`), separando las responsabilidades del servidor y del cliente web:
 
 ```text
-src/
- ├── api/           # Configuración de axios y conexión con el servidor
- ├── assets/        # Recursos visuales, logos e iconos
- ├── components/    # Componentes globales como Navbar, Footer y Hero
- ├── pages/         # Vistas principales de administración
- └── App.css        # Estilos globales
+PROYECTOIUDPELI/
+├── backend/                     # API RESTful en Node.js y Express
+│   ├── controllers/             # Lógica de negocio y autenticación (authController.js, etc.)
+│   ├── db/                      # Configuración de conexión a MongoDB Atlas
+│   ├── middlewares/             # Validación de tokens JWT y protección de rutas
+│   ├── models/                  # Esquemas de Mongoose (Media, Genero, Director, Productora, Tipo, Usuario)
+│   ├── routes/                  # Definición de endpoints REST (/api/...)
+│   ├── crearAdmin.js            # Script de inicialización de usuario administrador
+│   ├── index.js                 # Punto de entrada del servidor y políticas CORS
+│   ├── .env.template            # Plantilla de variables de entorno del servidor
+│   └── vercel.json              # Configuración de despliegue serverless (@vercel/node)
+│
+├── frontend/                    # Interfaz de usuario en React + Vite
+│   ├── public/                  # Archivos estáticos públicos
+│   ├── src/
+│   │   ├── api/                 # Cliente HTTP Axios (apiClient.js) conectado al backend
+│   │   ├── assets/              # Recursos gráficos e identidad visual
+│   │   ├── components/          # Componentes reutilizables (Navbar, tarjetas, modales, rutas protegidas)
+│   │   ├── pages/               # Vistas públicas y paneles administrativos CRUD
+│   │   ├── App.css              # Estilos globales
+│   │   ├── App.jsx              # Definición de rutas de la aplicación
+│   │   └── main.jsx             # Punto de montaje de React
+│   ├── index.html               # Documento base HTML
+│   ├── vite.config.js           # Configuración de empaquetado Vite
+│   └── vercel.json              # Reglas de reescritura (rewrites) para rutas SPA
+│
+└── README.md                    # Documentación general consolidada del proyecto
 ```
 
 ---
 
-## 🔧 Configuración e Instalación
+## 🔧 Configuración e Instalación Local
 
 ### 1. Requisitos Previos
+* **Node.js** (versión 18 o superior recomendada)
+* **npm** (gestor de paquetes incluido con Node.js)
+* Una instancia activa de **MongoDB Atlas** (o MongoDB local)
 
-* Tener instalado Node.js (versión 16 o superior)
-* Tener una instancia de MongoDB (Local o Atlas)
-
-### 2. Instalación del Proyecto
-
+### 2. Clonar el Repositorio
 ```bash
-git clone https://github.com/TU_USUARIO/CIUDA.git
-cd CIUDA
+git clone https://github.com/Ander-17/PROYECTOIUDPELI.git
+cd PROYECTOIUDPELI
+```
+
+### 3. Configuración y Ejecución del Backend
+```bash
+cd backend
 npm install
 ```
 
-### 3. Variables de Entorno (.env)
+Crea un archivo `.env` en la carpeta `backend/` tomando como base `.env.template` y define las siguientes variables:
+
+```env
+PORT=4000
+MONGO_URI=mongodb+srv://<usuario>:<password>@<cluster>.mongodb.net/db_Inventario_Peli_IUD
+JWT_SECRET=tu_clave_secreta_segura
+FRONTEND_URL=http://localhost:5173
+NODE_ENV=development
+```
+
+Inicia el servidor en modo desarrollo:
+```bash
+npm run dev
+```
+
+### 4. Configuración y Ejecución del Frontend
+En una nueva terminal, dirígete a la carpeta `frontend/`:
+
+```bash
+cd frontend
+npm install
+```
+
+Crea un archivo `.env` en la carpeta `frontend/` indicando la URL base de la API:
 
 ```env
 VITE_API_URL=http://localhost:4000/api
 ```
 
-### 4. Ejecución del Entorno
-
+Inicia la aplicación web:
 ```bash
 npm run dev
 ```
 
 ---
 
-## 🎓 Créditos e Institución
+## 🎓 Contexto Académico y Créditos
 
-Este proyecto ha sido desarrollado como parte de la formación académica en la Tecnología en Desarrollo de Software de la IU Digital de Antioquia.
+Proyecto desarrollado y sistematizado como trabajo de grado en la modalidad de **Sistematización de Experiencias** para optar al título de **Tecnólogo en Desarrollo de Software**, articulando los aprendizajes de las asignaturas *Ingeniería Web II*, *Gestión y Administración de Bases de Datos* y *Desarrollo de Software Seguro*.
 
-* **Desarrollador:** Anderson Lopera Rodríguez (Estudiante de 5to Semestre)
-
----
-
-© 2026 CIUDA | IU Digital de Antioquia | Anderson Lopera Rodríguez 
+* **Autor / Desarrollador Full-Stack:** Anderson Lopera Rodríguez
+* **Asesor:** Cesar Felipe Henao Villa, Magíster
+* **Institución:** Institución Universitaria Digital de Antioquia (IU Digital) — Facultad de Ingeniería y Ciencias Agropecuarias
+* **Año:** 2026
