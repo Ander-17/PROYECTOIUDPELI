@@ -9,7 +9,6 @@ export const Inicio = () => {
   const [cargando, setCargando] = useState(true);
   const [busqueda, setBusqueda] = useState('');
 
-  // Capturar parámetros de la URL enviados desde el Navbar
   const [searchParams] = useSearchParams();
   const generoUrl = searchParams.get('genero') || '';
   const tipoUrl = searchParams.get('tipo') || '';
@@ -185,7 +184,6 @@ export const Inicio = () => {
                         />
                       </div>
 
-                      {/* Columna de la Información */}
                       <div className="col-lg-8 col-md-7 text-center text-md-start px-md-4">
                         <span className="badge bg-warning text-dark mb-3 fw-bold px-3 py-2 fs-6">
                           ✨ Destacada #{idx + 1}
@@ -214,7 +212,6 @@ export const Inicio = () => {
                 ))}
               </div>
 
-              {/* Controles de navegación del carrusel */}
               <button
                 className="carousel-control-prev"
                 type="button"
@@ -243,7 +240,6 @@ export const Inicio = () => {
           </div>
         )}
 
-        {/* Estado de Carga / Cuadrícula de Contenido */}
         {cargando ? (
           <div className="loading-wrapper text-center py-5">
             <div className="spinner-border text-warning" role="status"></div>

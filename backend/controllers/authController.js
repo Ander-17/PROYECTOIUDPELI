@@ -6,31 +6,27 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // 1. Buscar el usuario
     const usuario = await Usuario.findOne({ email });
     if (!usuario) {
       return res.status(400).json({ mensaje: 'Correo o contraseña incorrectos' });
     }
 
-    // 2. Verificar contraseña
     const esPasswordCorrecto = await bcrypt.compare(password, usuario.password);
     if (!esPasswordCorrecto) {
       return res.status(400).json({ mensaje: 'Correo o contraseña incorrectos' });
     }
 
-    // 3. Generar el Token JWT
     const token = jwt.sign(
       { id: usuario._id, email: usuario.email },
       process.env.JWT_SECRET || 'clave_secreta_temporal',
       { expiresIn: '2h' }
     );
 
-    // 4. Guardar el token en una Cookie HttpOnly ultrasegura
     res.cookie('token', token, {
-      httpOnly: true, // Inaccesible para JavaScript del lado del cliente (protege contra XSS)
-      secure: process.env.NODE_ENV === 'production', // true en producción (HTTPS), false en local (HTTP)
-      sameSite: 'lax', // Protección contra ataques CSRF
-      maxAge: 2 * 60 * 60 * 1000 // Expira en 2 horas
+      httpOnly: true, 
+      secure: process.env.NODE_ENV === 'production', 
+      sameSite: 'lax', 
+      maxAge: 2 * 60 * 60 * 1000 
     });
 
     return res.status(200).json({ mensaje: 'Login exitoso' });
@@ -42,7 +38,6 @@ const login = async (req, res) => {
 
 const logout = (req, res) => {
   try {
-    // Limpiar la cookie de autenticación
     res.clearCookie('token', {
       httpOnly: true,
       sameSite: 'lax',

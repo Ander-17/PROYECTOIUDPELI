@@ -4,8 +4,7 @@ export const MovieCard = ({ movie }) => {
   return (
     <div className="col-md-3 mb-4">
       <div className="card movie-card h-100 shadow-lg">
-        
-        {/* Imagen del Contenido */}
+
         <div className="movie-card-img-container">
           <img 
             src={movie.imagen} 
@@ -21,7 +20,6 @@ export const MovieCard = ({ movie }) => {
           </span>
         </div>
 
-        {/* Detalles de la Producción */}
         <div className="card-body movie-card-body d-flex flex-column justify-content-between">
           <div>
             <h5 className="movie-card-title">{movie.titulo}</h5>

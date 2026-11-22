@@ -4,10 +4,8 @@ const verificarToken = require('../middlewares/authMiddleware'); // 1. Importamo
 
 const router = Router();
 
-// 🔓 RUTA PÚBLICA: Cualquiera puede ver las productoras
 router.get('/', getProductoras);
 
-// 🔒 RUTAS PROTEGIDAS: Exigen el token JWT para crear o modificar
 router.post('/', verificarToken, createProductora);
 router.put('/:id', verificarToken, updateProductora);
 

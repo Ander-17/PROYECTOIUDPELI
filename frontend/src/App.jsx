@@ -1,14 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-// Importaciones de Autenticación y Seguridad
 import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
-
-// Componentes generales
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-
-// Páginas
 import { Login } from './pages/Login';
 import { Inicio } from './pages/Inicio';
 import { Genero } from './pages/Genero';
@@ -26,11 +20,8 @@ function App() {
 
           <main className="container flex-grow-1 mt-4 mb-5">
             <Routes>
-              {/* --- RUTAS PÚBLICAS --- */}
               <Route path="/" element={<Inicio />} />
               <Route path="/login" element={<Login />} />
-
-              {/* --- RUTAS PROTEGIDAS (PANEL ADMINISTRATIVO) --- */}
               <Route element={<ProtectedRoute />}>
                 <Route path="/generos" element={<Genero />} />
                 <Route path="/directores" element={<Director />} />

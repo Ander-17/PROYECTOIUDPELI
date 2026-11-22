@@ -8,14 +8,12 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Listas para los dropdowns públicos
   const [generos, setGeneros] = useState([]);
   const [tipos, setTipos] = useState([]);
   const [directores, setDirectores] = useState([]);
   const [productoras, setProductoras] = useState([]);
 
   useEffect(() => {
-    // Si la sesión NO está activa, cargamos los datos desde /media para extraer los nombres reales asociados
     if (!esAutenticado) {
       const cargarDatosMenu = async () => {
         try {
@@ -23,8 +21,7 @@ export const Navbar = () => {
           if (Array.isArray(data)) {
             const g = [...new Set(data.map(m => m.generoPrincipal?.nombre || m.generoPrincipal?.nombres).filter(Boolean))];
             const t = [...new Set(data.map(m => m.tipo?.nombre || m.tipo?.nombres).filter(Boolean))];
-            
-            // CORRECCIÓN CLAVE: Apuntamos exactamente a 'directorPrincipal.nombres' tal como está en Media.jsx
+
             const d = [...new Set(data.map(m => m.directorPrincipal?.nombres || m.directorPrincipal?.nombre || m.director?.nombres || m.director?.nombre).filter(Boolean))];
             
             const p = [...new Set(data.map(m => m.productora?.nombre || m.productora?.nombres).filter(Boolean))];
@@ -71,8 +68,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg border-bottom border-secondary border-opacity-25 py-2">
       <div className="container">
-        
-        {/* Logo / Marca */}
+
         <Link className="navbar-brand fw-bold fs-4 d-flex align-items-center text-warning me-4" to="/">
           <span className="me-2">🎬</span> CIUDA
         </Link>
@@ -100,7 +96,6 @@ export const Navbar = () => {
               </NavLink>
             </li>
 
-            {/* --- MODO ADMINISTRADOR: ENLACES CRUD --- */}
             {esAutenticado ? (
               <>
                 <li className="nav-item">
@@ -155,7 +150,6 @@ export const Navbar = () => {
                 </li>
               </>
             ) : (
-              /* --- MODO VISITANTE PÚBLICO: DROPDOWNS --- */
               <>
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle px-3 fw-medium text-light" href="#" role="button" data-bs-toggle="dropdown">
@@ -208,7 +202,6 @@ export const Navbar = () => {
             )}
           </ul>
 
-          {/* Acciones de la Derecha */}
           <div className="d-flex align-items-center gap-3 mt-3 mt-lg-0">
             <button 
               onClick={handleSearchClick}

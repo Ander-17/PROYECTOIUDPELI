@@ -18,16 +18,12 @@ export const Login = () => {
     setCargandoEnvio(true);
 
     try {
-      // Hacemos la petición usando apiClient (la cookie HttpOnly se guarda sola en el navegador)
       await apiClient.post('/auth/login', { email, password });
 
-      // Actualizamos el estado de autenticación en el contexto
       login();
 
-      // Redirigimos a una de tus rutas protegidas (ej. /media)
       navigate('/media');
     } catch (err) {
-      // Axios guarda los errores del servidor en err.response?.data
       setError(err.response?.data?.mensaje || 'Error al iniciar sesión');
     } finally {
       setCargandoEnvio(false);

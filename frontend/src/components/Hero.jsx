@@ -31,7 +31,6 @@ export const Hero = ({ busqueda, setBusqueda }) => {
               Explora producciones, documentales y contenidos académicos de la IU Digital de Antioquia.
             </p>
 
-            {/* Buscador Estilo Cuevana Hero */}
             <div className="row justify-content-center my-4">
               <div className="col-md-7 col-lg-6">
                 <div className="input-group shadow-lg rounded-pill overflow-hidden bg-dark border border-secondary border-opacity-50">

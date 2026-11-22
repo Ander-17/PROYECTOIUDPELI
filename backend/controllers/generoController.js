@@ -33,7 +33,6 @@ const createGenero = async (req = request, res = response) => {
 
 const updateGenero = async (req = request, res = response) => {
     try {
-        // Cambiamos 'nombre' por 'id'
         const { id } = req.params; 
         const { nombre, descripcion, estado } = req.body;
 
@@ -44,7 +43,6 @@ const updateGenero = async (req = request, res = response) => {
             fechaActualizacion: new Date()
         };
 
-        // Usamos findByIdAndUpdate para evitar conflictos con el índice único del nombre
         const generoActualizado = await Genero.findByIdAndUpdate(
             id, 
             data, 

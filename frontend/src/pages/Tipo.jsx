@@ -99,7 +99,6 @@ export const Tipo = () => {
                 ) : tipos.map((t) => (
                   <tr key={t._id}>
                     <td className="fw-bold">{t.nombre}</td>
-                    {/* Aplicada clase para visibilidad de descripción */}
                     <td className="admin-table-text">{t.descripcion || '---'}</td>
                     <td>
                       <button className="btn btn-sm btn-outline-info" onClick={() => prepararEdicion(t)}>Editar</button>

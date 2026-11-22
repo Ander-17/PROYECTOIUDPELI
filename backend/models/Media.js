@@ -41,8 +41,6 @@ const mediaSchema = Schema({
         required: [true, 'El año de estreno es obligatorio']
     },
 
-    // Relaciones con los demás módulos //
-
     generoPrincipal: {
         type: Schema.Types.ObjectId,
         ref: 'Genero',

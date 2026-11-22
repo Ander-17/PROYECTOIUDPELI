@@ -15,7 +15,6 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Permite peticiones sin origin (como Postman, curl o mismo origen) o dentro de la lista permitida
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
@@ -27,7 +26,6 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-/* --- Routes ---*/
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/generos', require('./routes/genero'));
 app.use('/api/directores', require('./routes/director'));

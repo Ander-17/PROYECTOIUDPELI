@@ -11,7 +11,6 @@ export const Footer = () => {
         <p className="footer-text mb-1 fw-bold text-warning">
           © {anioActual} CIUDA | Banco de Películas IU Digital de Antioquia
         </p>
-        {/* Cambiamos text-muted por text-white (puedes usar text-white-50 si lo quieres un tono más suave) */}
         <span className="footer-subtext text-white small">
           {esAutenticado 
             ? "Tecnología en Desarrollo de Software - Panel de Administración" 
